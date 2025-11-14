@@ -20,12 +20,6 @@ jobs:
         with:
           python-version: "3.9"
 
-      # autopep8
-      - name: install autopep8
-        run: pip install autopep8
-      - name: run autopep8
-        run: autopep8 --in-place --aggressive --aggressive .
-
       # installer les requirements 
       - name: Install dependencies
         run: pip install -r requirements.txt
