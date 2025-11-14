@@ -22,8 +22,7 @@ jobs:
 
       # installer les requirements 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       # Vérifier la qualité du code (lint) avec Flake8
       - name: Lint with Flake8
