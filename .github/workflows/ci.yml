@@ -1,0 +1,39 @@
+name: Build and test 
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # recuperer le code 
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Installer Python 3.9 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      # installer les requirements 
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Vérifier la qualité du code (lint) avec Flake8
+      - name: Lint with Flake8
+        run: |
+          pip install flake8
+          flake8 . 
+        # Si des erreurs sont trouvées, le pipeline échoue
+
+      # faire les tests tests avec nosetests
+      - name: Run tests with nose
+        run: |
+          pip install nose
+          nosetests
